@@ -1,14 +1,22 @@
 import * as React from 'react';
+import styled from 'styled-components/macro';
 import { Helmet } from 'react-helmet-async';
+import { SearchBar, WeatherDetails } from 'app/components';
 
-export function HomePage() {
+export function WeatherPage() {
   return (
-    <>
+    <WeatherPageWrapper>
       <Helmet>
-        <title>Home Page</title>
-        <meta name="description" content="A Boilerplate application homepage" />
+        <title>Weather</title>
+        <meta name="Weather" content="A Herolo Home Assignment Weather-App" />
       </Helmet>
-      <span>HomePage container</span>
-    </>
+      <MainContentFrame>
+        <SearchBar />
+        <WeatherDetails />
+      </MainContentFrame>
+    </WeatherPageWrapper>
   );
 }
+
+const WeatherPageWrapper = styled.div``;
+const MainContentFrame = styled.div``;

@@ -1,8 +1,8 @@
 // TODO
 
-- [ ] Connect with API: send a working request for Tel Aviv with your API key.
+- [x] Connect with API: send a working request for Tel Aviv with your API key.
 
-- [ ] Get the weather and the five-day-forecast details.
+- [x] Get the weather and the five-day-forecast details.
 
 - [ ] Save the details, disconnect the API temporarily, and then display them on page.
 

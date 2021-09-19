@@ -1,0 +1,49 @@
+name: cicd
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [12.x]
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Setup Node ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - name: Install dependencies
+        run: npm install
+        working-directory: ./herolo
+
+      - name: Start the application
+        run: npm start & npx wait-on http://localhost:3000
+        working-directory: ./herolo
+
+      - name: Build
+        run: npm run build
+        working-directory: ./herolo
+
+      - name: Deploy on GH-Pages
+        run: |
+          git config --global user.name $user_name
+          git config --global user.email $user_email
+          git remote set-url origin https://${github_token}@github.com/${repository}
+          npm run deploy
+        env:
+          user_name: 'KorenEzri'
+          user_email: 'korenatdevelopes@gmail.com'
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          repository: ${{ github.repository }}
+        working-directory: ./herolo

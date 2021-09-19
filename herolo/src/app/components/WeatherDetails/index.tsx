@@ -1,20 +1,19 @@
-/**
-*
-* WeatherDetails
-*
-*/
 import * as React from 'react';
 import styled from 'styled-components/macro';
+import { CurrentWeather } from "./CurrentWeather/Loadable"
+import { FiveDayForecast } from "./FiveDayForecast/Loadable"
 
 interface Props {}
 
 export function WeatherDetails(props: Props) {
 
   return (
-  <Div>
-  </Div>
+  <WeatherDetailsFrame>
+    <CurrentWeather />
+    <FiveDayForecast />
+  </WeatherDetailsFrame>
   );
 
 };
 
-const Div = styled.div``;
+const WeatherDetailsFrame = styled.div``;

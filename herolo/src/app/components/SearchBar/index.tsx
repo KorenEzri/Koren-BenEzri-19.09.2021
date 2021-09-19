@@ -12,6 +12,11 @@ export function SearchBar(props: Props) {
 
   return (
   <Div>
+    SearchBar
+    SearchBar
+    SearchBar
+    SearchBar
+    SearchBar
   </Div>
   );
 

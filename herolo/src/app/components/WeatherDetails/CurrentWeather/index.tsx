@@ -1,8 +1,3 @@
-/**
-*
-* CurrentWeather
-*
-*/
 import * as React from 'react';
 import styled from 'styled-components/macro';
 
@@ -12,6 +7,7 @@ export function CurrentWeather(props: Props) {
 
   return (
   <Div>
+    Current weather
   </Div>
   );
 
