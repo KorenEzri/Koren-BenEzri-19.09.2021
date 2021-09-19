@@ -65,12 +65,13 @@
   },
   "config": {
     "commitizen": {
-      "path": "./node_modules/cz-conventional-changelog"
+      "path": "./herolo/node_modules/cz-conventional-changelog"
     }
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
+    "commit": "npx git-cz",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "test:generators": "ts-node --project=./internals/ts-node.tsconfig.json ./internals/testing/generators/test-generators.ts",
