@@ -25,15 +25,15 @@ jobs:
 
       - name: Install dependencies
         run: npm install
-        working-directory: ./herolo
+        working-directory: ./weather
 
       - name: Start the application
         run: npm start & npx wait-on http://localhost:3000
-        working-directory: ./herolo
+        working-directory: ./weather
 
       - name: Build
         run: npm run build
-        working-directory: ./herolo
+        working-directory: ./weather
 
       - name: Deploy on GH-Pages
         run: |
@@ -42,8 +42,8 @@ jobs:
           git remote set-url origin https://${github_token}@github.com/${repository}
           npm run deploy
         env:
-          user_name: 'KorenEzri'
-          user_email: 'korenatdevelopes@gmail.com'
+          user_name: "KorenEzri"
+          user_email: "korenatdevelopes@gmail.com"
           github_token: ${{ secrets.GITHUB_TOKEN }}
           repository: ${{ github.repository }}
-        working-directory: ./herolo
+        working-directory: ./weather

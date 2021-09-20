@@ -65,7 +65,7 @@
   },
   "config": {
     "commitizen": {
-      "path": "./herolo/node_modules/cz-conventional-changelog"
+      "path": "./weather/node_modules/cz-conventional-changelog"
     }
   },
   "scripts": {
