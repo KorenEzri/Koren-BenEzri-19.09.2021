@@ -1,20 +1,20 @@
 utils:
-  - herolo/src/utils/**/*
+  - weather/src/utils/**/*
 types:
-  - herolo/src/types/**/*
+  - weather/src/types/**/*
 components:
-  - herolo/src/app/components/**/*
+  - weather/src/app/components/**/*
 pages:
-  - herolo/src/app/pages/**/*
+  - weather/src/app/pages/**/*
 network:
-  - herolo/src/network/**/*
+  - weather/src/network/**/*
 store:
-  - herolo/src/store/**/*
+  - weather/src/store/**/*
 styles:
-  - herolo/src/styles/**/*
+  - weather/src/styles/**/*
 package:
-  - herolo/package.json
+  - weather/package.json
 workflows:
-  - herolo/.github/workflows/**/*
+  - weather/.github/workflows/**/*
 tests:
   - __tests__/**/*

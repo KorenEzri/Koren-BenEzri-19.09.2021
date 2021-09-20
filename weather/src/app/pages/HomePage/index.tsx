@@ -8,7 +8,7 @@ export function WeatherPage() {
     <WeatherPageWrapper>
       <Helmet>
         <title>Weather</title>
-        <meta name="Weather" content="A Herolo Home Assignment Weather-App" />
+        <meta name="Weather" content="An H Home Assignment Weather-App" />
       </Helmet>
       <MainContentFrame>
         <SearchBar />
