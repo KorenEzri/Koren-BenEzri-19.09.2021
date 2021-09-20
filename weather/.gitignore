@@ -7,7 +7,6 @@ stats.json
 .pnp.js
 
 # misc
-key.ts
 .DS_Store
 npm-debug.log*
 yarn-debug.log*
