@@ -10,7 +10,6 @@ import 'sanitize.css/sanitize.css';
 
 // Import root app
 import { App } from 'app';
-
 import { HelmetProvider } from 'react-helmet-async';
 import { PersistGate } from 'redux-persist/integration/react';
 // import { store, persistor } from './store/configureStore';

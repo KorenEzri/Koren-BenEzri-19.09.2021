@@ -21,7 +21,7 @@ export function App() {
         <meta name="description" content="A Weather application" />
       </Helmet>
       <Switch>
-        <Route exact path="/" component={HomePage} />
+        <Route exact path="/:key" component={HomePage} />
         <Route component={NotFoundPage} />
       </Switch>
       <GlobalStyle />

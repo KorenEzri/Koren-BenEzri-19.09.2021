@@ -1,16 +1,20 @@
 import * as React from 'react';
 import styled from 'styled-components/macro';
+import { IFiveDayForecast } from 'types';
+import { ForecastDayList } from './ForecastDayList/Loadable';
 
-interface Props {}
+interface Props {
+  fiveDayForecast: IFiveDayForecast;
+}
 
 export function FiveDayForecast(props: Props) {
-
+  const { fiveDayForecast } = props;
   return (
-  <Div>
-    Five day forecast
-  </Div>
+    <FiveDayForecastFrame>
+      <ForecastDayList fiveDayForecast={fiveDayForecast} />
+    </FiveDayForecastFrame>
   );
+}
 
-};
-
-const Div = styled.div``;
+const FiveDayForecastFrame = styled.div`
+`;

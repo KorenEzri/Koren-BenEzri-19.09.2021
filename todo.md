@@ -4,9 +4,11 @@
 
 - [x] Get the weather and the five-day-forecast details.
 
-- [ ] Save the details, disconnect the API temporarily, and then display them on page.
+- [x] Save the details, disconnect the API temporarily, and then display them on page.
 
-- [ ] Tel Aviv weather should be displayed by default.
+- [x] Add a spinner
+
+- [x] Tel Aviv weather should be displayed by default.
 
 - [ ] Reconnect the API and create a working search for the weather.
 
