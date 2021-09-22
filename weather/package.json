@@ -78,6 +78,8 @@
     "commit": "npx git-cz",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "test:generators": "ts-node --project=./internals/ts-node.tsconfig.json ./internals/testing/generators/test-generators.ts",
     "start:prod": "yarn run build && serve -s build",
     "checkTs": "tsc --noEmit",
