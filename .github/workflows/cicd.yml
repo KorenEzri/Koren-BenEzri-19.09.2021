@@ -34,6 +34,8 @@ jobs:
       - name: Build
         run: npm run build
         working-directory: ./weather
+        env:
+          CI: false
 
       - name: Deploy on GH-Pages
         run: |
