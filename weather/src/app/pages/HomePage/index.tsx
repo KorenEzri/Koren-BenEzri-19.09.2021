@@ -4,7 +4,7 @@ import { Helmet } from 'react-helmet-async';
 import { WeatherDetails } from 'app/components';
 
 export function WeatherPage(props) {
-  const { key } = props.match.params;
+  const key = window.location.hash.slice(2)
   return (
     <WeatherPageWrapper>
       <Helmet>
