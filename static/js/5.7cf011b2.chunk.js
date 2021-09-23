@@ -1,0 +1,1 @@
+(this.webpackJsonpweather=this.webpackJsonpweather||[]).push([[5],{512:function(t,n,e){"use strict";e.r(n),e.d(n,"FavoritesList",(function(){return s}));var i=e(138),r=(e(1),e(16));function s(t){return Object(r.jsx)(c,{})}var c=i.b.div.withConfig({componentId:"sc-a7060n-0"})([""])}}]);
