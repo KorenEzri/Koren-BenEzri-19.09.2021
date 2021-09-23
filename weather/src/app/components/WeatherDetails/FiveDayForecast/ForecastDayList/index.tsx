@@ -28,4 +28,5 @@ const FiveDayForecastListFrame = styled.ul`
   flex-direction: row;
   list-style-type: none;
   max-width: 1100px;
+  flex-wrap: wrap;
 `;

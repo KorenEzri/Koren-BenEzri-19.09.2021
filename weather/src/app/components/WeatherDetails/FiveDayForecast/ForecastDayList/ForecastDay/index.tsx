@@ -33,7 +33,7 @@ export function ForecastDay(props: Props) {
 }
 
 const ForecastDayFrame = styled.li`
-  margin-right: 20px;
+  margin-top: 10px;
   padding: 20px;
   background-color: #ffffff;
   border-radius: 12px;

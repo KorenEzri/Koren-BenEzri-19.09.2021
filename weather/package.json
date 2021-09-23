@@ -27,6 +27,7 @@
     "eslint-config-prettier": "8.3.0",
     "eslint-plugin-prettier": "3.4.0",
     "eslint-plugin-react-hooks": "4.2.0",
+    "file-loader": "6.2.0",
     "fontfaceobserver": "2.1.0",
     "husky": "7.0.0",
     "i18next": "20.3.2",
@@ -72,7 +73,7 @@
       "path": "./weather/node_modules/cz-conventional-changelog"
     }
   },
-  "homepage":"https://korenezri.github.io/Koren-BenEzri-19.09.2021",
+  "homepage": "https://korenezri.github.io/Koren-BenEzri-19.09.2021",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",

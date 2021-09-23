@@ -1,4 +1,11 @@
-import { Gauge } from 'app/components/Gauge/Loadable';
+import {
+  Clock,
+  Gauge,
+  Humidity,
+  Visibility,
+  WindSpeed,
+  WindSpeedDirection,
+} from 'app/components';
 import styled from 'styled-components/macro';
 import { IFullConditions } from 'types';
 import { ConditionListItem } from './ConditionListItem/Loadable';
@@ -18,6 +25,7 @@ export function ConditionsList(props: Props) {
             key={`condition_time_key}`}
             name={'Current Time'}
             data={currentConditions.LocalObservationDateTime}
+            Component={Clock}
           />
           <ConditionListItem
             key={`condition_uvindex_key}`}
@@ -28,22 +36,29 @@ export function ConditionsList(props: Props) {
           <ConditionListItem
             key={`condition_winddirection_key}`}
             name={'Wind direction'}
-            data={currentConditions.Wind.Direction.Degrees}
-          />
-          <ConditionListItem
-            key={`condition_windspeed_key}`}
-            name={'Wind speed'}
-            data={`${currentConditions.Wind.Speed.Metric.UnitType} ${currentConditions.Wind.Speed.Metric.Unit}`}
+            data={{
+              direction: currentConditions.Wind.Direction.English,
+              number: currentConditions.Wind.Direction.Degrees,
+            }}
+            Component={WindSpeedDirection}
           />
           <ConditionListItem
             key={`condition_visibility_key}`}
             name={'Visibility'}
             data={`${currentConditions.Visibility.Metric.UnitType} ${currentConditions.Visibility.Metric.Unit}`}
+            Component={Visibility}
+          />
+          <ConditionListItem
+            key={`condition_windspeed_key}`}
+            name={'Wind speed'}
+            data={`${currentConditions.Wind.Speed.Metric.UnitType} ${currentConditions.Wind.Speed.Metric.Unit}`}
+            Component={WindSpeed}
           />
           <ConditionListItem
             key={`condition_humidity_key}`}
             name={'Humidity'}
             data={`${currentConditions.RelativeHumidity}`}
+            Component={Humidity}
           />
         </>
       )}
