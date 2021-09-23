@@ -23,17 +23,22 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
 
+      - name: Cache dependencies
+        uses: actions/cache@v2
+        with:
+          path: |
+            **/node_modules
+          key: ${{ runner.os }}-${{ hashFiles('**/package-lock.json') }}
+
       - name: Install dependencies
         run: npm install
-        working-directory: ./weather
-
-      - name: Start the application
-        run: npm start & npx wait-on http://localhost:3000
         working-directory: ./weather
 
       - name: Build
         run: npm run build
         working-directory: ./weather
+        env:
+          CI: false
 
       - name: Deploy on GH-Pages
         run: |
@@ -44,6 +49,7 @@ jobs:
         env:
           user_name: "KorenEzri"
           user_email: "korenatdevelopes@gmail.com"
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+          github_token: ${{ secrets.TOKEN }}
           repository: ${{ github.repository }}
+          CI: false
         working-directory: ./weather

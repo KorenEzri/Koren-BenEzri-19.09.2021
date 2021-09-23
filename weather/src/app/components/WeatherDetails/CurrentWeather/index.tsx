@@ -1,16 +1,29 @@
 import * as React from 'react';
 import styled from 'styled-components/macro';
+import { IFullConditions } from 'types';
+import { ConditionsList } from './ConditionsList/Loadable'
 
-interface Props {}
+interface Props {
+  currentConditions: IFullConditions[];
+}
 
 export function CurrentWeather(props: Props) {
+  const { currentConditions } = props;
 
   return (
-  <Div>
-    Current weather
-  </Div>
+  <CurrentConditionsFrame>
+    <CurrentConditionsTitle>The weather today</CurrentConditionsTitle>
+    <ConditionsList currentConditions={currentConditions[0]} />
+  </CurrentConditionsFrame>
   );
 
 };
 
-const Div = styled.div``;
+const CurrentConditionsFrame = styled.div`
+  margin-top: 60px;
+`;
+const CurrentConditionsTitle = styled.div`
+  font-weight: bold;
+  font-size: 30px;
+  margin: 12px;
+`;

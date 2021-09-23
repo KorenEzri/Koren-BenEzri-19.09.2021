@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Helmet } from 'react-helmet-async';
-import { Switch, Route, BrowserRouter } from 'react-router-dom';
+import { Switch, Route, HashRouter } from 'react-router-dom';
 
 import { GlobalStyle } from 'styles/global-styles';
 
@@ -11,8 +11,8 @@ import { useTranslation } from 'react-i18next';
 export function App() {
   const { i18n } = useTranslation();
   return (
-    <BrowserRouter>
-    <Header />
+    <HashRouter basename={process.env.PUBLIC_URL}>
+      <Header />
       <Helmet
         titleTemplate="%s - Weather"
         defaultTitle="Weather"
@@ -21,10 +21,14 @@ export function App() {
         <meta name="description" content="A Weather application" />
       </Helmet>
       <Switch>
-        <Route exact path="/" component={HomePage} />
-        <Route component={NotFoundPage} />
+        <Route exact path="/:key">
+          <HomePage />
+        </Route>
+        <Route>
+          <NotFoundPage />
+        </Route>
       </Switch>
       <GlobalStyle />
-    </BrowserRouter>
+    </HashRouter>
   );
 }

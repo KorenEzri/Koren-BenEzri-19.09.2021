@@ -14,9 +14,6 @@ export function SearchBar(props: Props) {
   <Div>
     SearchBar
     SearchBar
-    SearchBar
-    SearchBar
-    SearchBar
   </Div>
   );
 

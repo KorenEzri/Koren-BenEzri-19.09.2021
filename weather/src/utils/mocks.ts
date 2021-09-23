@@ -1,4 +1,10 @@
-export const mock = {
+import { IFiveDayForecast } from 'types';
+interface Mock {
+  currentConditions: any;
+  fiveDays: IFiveDayForecast;
+  autoComplete: any;
+}
+export const mock: Mock = {
   currentConditions: [
     {
       LocalObservationDateTime: '2021-09-19T11:31:00+03:00',
@@ -343,4 +349,382 @@ export const mock = {
       },
     },
   ],
+};
+
+export const fullConditions = {
+  LocalObservationDateTime: '2021-09-22T12:40:00+03:00',
+  EpochTime: 1632303600,
+  WeatherText: 'Mostly sunny',
+  WeatherIcon: 2,
+  HasPrecipitation: false,
+  PrecipitationType: null,
+  IsDayTime: true,
+  Temperature: {
+    Metric: {
+      Value: 29.5,
+      Unit: 'C',
+      UnitType: 17,
+    },
+    Imperial: {
+      Value: 85,
+      Unit: 'F',
+      UnitType: 18,
+    },
+  },
+  RealFeelTemperature: {
+    Metric: {
+      Value: 32.6,
+      Unit: 'C',
+      UnitType: 17,
+    },
+    Imperial: {
+      Value: 91,
+      Unit: 'F',
+      UnitType: 18,
+    },
+  },
+  RealFeelTemperatureShade: {
+    Metric: {
+      Value: 29.3,
+      Unit: 'C',
+      UnitType: 17,
+    },
+    Imperial: {
+      Value: 85,
+      Unit: 'F',
+      UnitType: 18,
+    },
+  },
+  RelativeHumidity: 56,
+  IndoorRelativeHumidity: 56,
+  DewPoint: {
+    Metric: {
+      Value: 19.8,
+      Unit: 'C',
+      UnitType: 17,
+    },
+    Imperial: {
+      Value: 68,
+      Unit: 'F',
+      UnitType: 18,
+    },
+  },
+  Wind: {
+    Direction: {
+      Degrees: 248,
+      Localized: 'WSW',
+      English: 'WSW',
+    },
+    Speed: {
+      Metric: {
+        Value: 17.3,
+        Unit: 'km/h',
+        UnitType: 7,
+      },
+      Imperial: {
+        Value: 10.7,
+        Unit: 'mi/h',
+        UnitType: 9,
+      },
+    },
+  },
+  WindGust: {
+    Speed: {
+      Metric: {
+        Value: 26.7,
+        Unit: 'km/h',
+        UnitType: 7,
+      },
+      Imperial: {
+        Value: 16.6,
+        Unit: 'mi/h',
+        UnitType: 9,
+      },
+    },
+  },
+  UVIndex: 6,
+  UVIndexText: 'High',
+  Visibility: {
+    Metric: {
+      Value: 16.1,
+      Unit: 'km',
+      UnitType: 6,
+    },
+    Imperial: {
+      Value: 10,
+      Unit: 'mi',
+      UnitType: 2,
+    },
+  },
+  ObstructionsToVisibility: '',
+  CloudCover: 16,
+  Ceiling: {
+    Metric: {
+      Value: 12192,
+      Unit: 'm',
+      UnitType: 5,
+    },
+    Imperial: {
+      Value: 40000,
+      Unit: 'ft',
+      UnitType: 0,
+    },
+  },
+  Pressure: {
+    Metric: {
+      Value: 1010.5,
+      Unit: 'mb',
+      UnitType: 14,
+    },
+    Imperial: {
+      Value: 29.84,
+      Unit: 'inHg',
+      UnitType: 12,
+    },
+  },
+  PressureTendency: {
+    LocalizedText: 'Falling',
+    Code: 'F',
+  },
+  Past24HourTemperatureDeparture: {
+    Metric: {
+      Value: -1.7,
+      Unit: 'C',
+      UnitType: 17,
+    },
+    Imperial: {
+      Value: -3,
+      Unit: 'F',
+      UnitType: 18,
+    },
+  },
+  ApparentTemperature: {
+    Metric: {
+      Value: 31.7,
+      Unit: 'C',
+      UnitType: 17,
+    },
+    Imperial: {
+      Value: 89,
+      Unit: 'F',
+      UnitType: 18,
+    },
+  },
+  WindChillTemperature: {
+    Metric: {
+      Value: 29.4,
+      Unit: 'C',
+      UnitType: 17,
+    },
+    Imperial: {
+      Value: 85,
+      Unit: 'F',
+      UnitType: 18,
+    },
+  },
+  WetBulbTemperature: {
+    Metric: {
+      Value: 22.9,
+      Unit: 'C',
+      UnitType: 17,
+    },
+    Imperial: {
+      Value: 73,
+      Unit: 'F',
+      UnitType: 18,
+    },
+  },
+  Precip1hr: {
+    Metric: {
+      Value: 0,
+      Unit: 'mm',
+      UnitType: 3,
+    },
+    Imperial: {
+      Value: 0,
+      Unit: 'in',
+      UnitType: 1,
+    },
+  },
+  PrecipitationSummary: {
+    Precipitation: {
+      Metric: {
+        Value: 0,
+        Unit: 'mm',
+        UnitType: 3,
+      },
+      Imperial: {
+        Value: 0,
+        Unit: 'in',
+        UnitType: 1,
+      },
+    },
+    PastHour: {
+      Metric: {
+        Value: 0,
+        Unit: 'mm',
+        UnitType: 3,
+      },
+      Imperial: {
+        Value: 0,
+        Unit: 'in',
+        UnitType: 1,
+      },
+    },
+    Past3Hours: {
+      Metric: {
+        Value: 0,
+        Unit: 'mm',
+        UnitType: 3,
+      },
+      Imperial: {
+        Value: 0,
+        Unit: 'in',
+        UnitType: 1,
+      },
+    },
+    Past6Hours: {
+      Metric: {
+        Value: 0,
+        Unit: 'mm',
+        UnitType: 3,
+      },
+      Imperial: {
+        Value: 0,
+        Unit: 'in',
+        UnitType: 1,
+      },
+    },
+    Past9Hours: {
+      Metric: {
+        Value: 0,
+        Unit: 'mm',
+        UnitType: 3,
+      },
+      Imperial: {
+        Value: 0,
+        Unit: 'in',
+        UnitType: 1,
+      },
+    },
+    Past12Hours: {
+      Metric: {
+        Value: 0,
+        Unit: 'mm',
+        UnitType: 3,
+      },
+      Imperial: {
+        Value: 0,
+        Unit: 'in',
+        UnitType: 1,
+      },
+    },
+    Past18Hours: {
+      Metric: {
+        Value: 0,
+        Unit: 'mm',
+        UnitType: 3,
+      },
+      Imperial: {
+        Value: 0,
+        Unit: 'in',
+        UnitType: 1,
+      },
+    },
+    Past24Hours: {
+      Metric: {
+        Value: 0,
+        Unit: 'mm',
+        UnitType: 3,
+      },
+      Imperial: {
+        Value: 0,
+        Unit: 'in',
+        UnitType: 1,
+      },
+    },
+  },
+  TemperatureSummary: {
+    Past6HourRange: {
+      Minimum: {
+        Metric: {
+          Value: 25.2,
+          Unit: 'C',
+          UnitType: 17,
+        },
+        Imperial: {
+          Value: 77,
+          Unit: 'F',
+          UnitType: 18,
+        },
+      },
+      Maximum: {
+        Metric: {
+          Value: 30,
+          Unit: 'C',
+          UnitType: 17,
+        },
+        Imperial: {
+          Value: 86,
+          Unit: 'F',
+          UnitType: 18,
+        },
+      },
+    },
+    Past12HourRange: {
+      Minimum: {
+        Metric: {
+          Value: 23.9,
+          Unit: 'C',
+          UnitType: 17,
+        },
+        Imperial: {
+          Value: 75,
+          Unit: 'F',
+          UnitType: 18,
+        },
+      },
+      Maximum: {
+        Metric: {
+          Value: 30,
+          Unit: 'C',
+          UnitType: 17,
+        },
+        Imperial: {
+          Value: 86,
+          Unit: 'F',
+          UnitType: 18,
+        },
+      },
+    },
+    Past24HourRange: {
+      Minimum: {
+        Metric: {
+          Value: 23.9,
+          Unit: 'C',
+          UnitType: 17,
+        },
+        Imperial: {
+          Value: 75,
+          Unit: 'F',
+          UnitType: 18,
+        },
+      },
+      Maximum: {
+        Metric: {
+          Value: 31.6,
+          Unit: 'C',
+          UnitType: 17,
+        },
+        Imperial: {
+          Value: 89,
+          Unit: 'F',
+          UnitType: 18,
+        },
+      },
+    },
+  },
+  MobileLink:
+    'http://www.accuweather.com/en/il/tel-aviv/215854/current-weather/215854?lang=en-us',
+  Link: 'http://www.accuweather.com/en/il/tel-aviv/215854/current-weather/215854?lang=en-us',
 };
