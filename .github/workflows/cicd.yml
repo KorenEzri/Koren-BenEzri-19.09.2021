@@ -42,7 +42,7 @@ jobs:
         env:
           user_name: "KorenEzri"
           user_email: "korenatdevelopes@gmail.com"
-          github_token: ${{ secrets.TOKEN }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
           repository: ${{ github.repository }}
           CI: false
         working-directory: ./weather
