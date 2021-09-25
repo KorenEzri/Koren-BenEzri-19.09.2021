@@ -5,16 +5,18 @@ import { SearchResult } from './SearchResult/Loadable';
 interface Props {
   searchSuggestions: IAutoCompleteResult[];
   setLocationKey;
+  setLocationName;
 }
 
 export function SearchResultList(props: Props) {
-  const { searchSuggestions, setLocationKey } = props;
+  const { searchSuggestions, setLocationKey, setLocationName } = props;
 
   return (
     <SearchResultListFrame>
       {searchSuggestions?.map((suggestion, index) => {
         return (
           <SearchResult
+          setLocationName={setLocationName}
             suggestion={suggestion}
             key={`SearchSuggestion#${index}`}
             setLocationKey={setLocationKey}

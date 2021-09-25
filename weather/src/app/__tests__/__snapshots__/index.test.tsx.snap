@@ -21,7 +21,7 @@ exports[`<App /> should render and match the snapshot 1`] = `
   </Helmet>
   <Switch>
     <Route
-      path="/weather/:key"
+      path="/:key"
     >
       <Unknown />
     </Route>

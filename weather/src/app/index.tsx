@@ -5,6 +5,7 @@ import { Switch, Route, HashRouter } from 'react-router-dom';
 import { GlobalStyle } from 'styles/global-styles';
 
 import { HomePage } from './pages/HomePage/Loadable';
+import { Favorites } from "./pages/Favorites/Loadable"
 import { NotFoundPage, Header } from './components';
 import { useTranslation } from 'react-i18next';
 
@@ -21,7 +22,13 @@ export function App() {
         <meta name="description" content="A Weather application" />
       </Helmet>
       <Switch>
-        <Route path="/weather/:key">
+        <Route path="/favorites">
+          <Favorites />
+        </Route>
+        <Route exact path="/:key">
+          <HomePage />
+        </Route>
+        <Route exact path="/">
           <HomePage />
         </Route>
         <Route>

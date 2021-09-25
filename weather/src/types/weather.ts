@@ -620,6 +620,7 @@ export interface IFullConditions {
   Link: string;
   favorite?: boolean;
   key?: string;
+  locationName?: string;
 }
 
 export interface Country {

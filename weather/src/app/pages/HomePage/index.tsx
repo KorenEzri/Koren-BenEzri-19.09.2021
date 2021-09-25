@@ -15,5 +15,4 @@ export function WeatherPage(props) {
 }
 
 const WeatherPageWrapper = styled.div`
-  height: 100%;
 `;

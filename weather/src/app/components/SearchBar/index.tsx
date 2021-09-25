@@ -13,11 +13,12 @@ import { SearchResultList } from './SearchResultList/Loadable';
 interface Props {
   setSearchText;
   setLocationKey;
+  setLocationName;
   searchText: string;
 }
 
 export function SearchBar(props: Props) {
-  const { searchText, setSearchText, setLocationKey } = props;
+  const { searchText, setSearchText, setLocationKey, setLocationName } = props;
   const [showSpinner, setShowSpinner] = React.useState(false);
   const [spinnerError, setSpinnerError] = React.useState<ISpinnerError>();
   const [searchSuggestions, setSearchSuggestions] = React.useState<
@@ -76,6 +77,7 @@ export function SearchBar(props: Props) {
       >
         {searchSuggestions.length > 0 && (
           <SearchResultList
+          setLocationName={setLocationName}
             setLocationKey={setLocationKey}
             searchSuggestions={searchSuggestions}
           />

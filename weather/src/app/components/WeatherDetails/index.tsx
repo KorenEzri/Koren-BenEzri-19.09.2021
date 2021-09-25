@@ -17,7 +17,8 @@ interface Props {}
 
 export function WeatherDetails(props: Props) {
   const [searchText, setSearchText] = React.useState('');
-  const [locationKey, setLocationKey] = React.useState<string>('');
+  const [locationKey, setLocationKey] = React.useState<string>('215854');
+  const [locationName, setLocationName] = React.useState<string>('Tel Aviv');
   const [showSpinner, setShowSpinner] = React.useState(false);
   const [spinnerError, setSpinnerError] = React.useState<ISpinnerError>();
   const [currentConditions, setCurrentConditions] = React.useState<
@@ -27,7 +28,7 @@ export function WeatherDetails(props: Props) {
     React.useState<IFiveDayForecast>();
 
   React.useEffect(() => {
-    const key = window.location.hash.slice(10);
+    let key = window.location.hash.slice(2);
     setLocationKey(key);
   }, [locationKey]);
 
@@ -38,6 +39,7 @@ export function WeatherDetails(props: Props) {
         // await getCurrentConditions(Number(locationKey), setCurrentConditions);
         // await getFiveDayForecast(Number(locationKey), setFiveDayForecase);
         fullConditions.key = locationKey;
+        fullConditions.locationName = locationName;
         setCurrentConditions([fullConditions]);
         setFiveDayForecase(mock.fiveDays);
         setShowSpinner(false);
@@ -66,6 +68,7 @@ export function WeatherDetails(props: Props) {
           <SearchBar
             setSearchText={setSearchText}
             setLocationKey={setLocationKey}
+            setLocationName={setLocationName}
             searchText={searchText}
           />
           <WeatherBasics currentConditions={currentConditions[0]} />
@@ -73,6 +76,7 @@ export function WeatherDetails(props: Props) {
             <AddToFavorites
               favorite={currentConditions[0].favorite}
               locationKey={locationKey}
+              locationName={locationName}
               favoriteItem={{
                 conditions: currentConditions[0],
                 forecast: fiveDayForecast,

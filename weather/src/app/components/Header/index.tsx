@@ -1,4 +1,5 @@
 import styled from 'styled-components/macro';
+import { Navbar } from './Navbar/Loadable';
 
 interface Props {}
 
@@ -7,7 +8,9 @@ export function Header(props: Props) {
     <HeaderFrame>
       <HeaderLeftFrame>
       </HeaderLeftFrame>
-      <HeaderRightFrame>RIGHT</HeaderRightFrame>
+      <HeaderRightFrame>
+        <Navbar />
+      </HeaderRightFrame>
     </HeaderFrame>
   );
 }

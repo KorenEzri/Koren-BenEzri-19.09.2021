@@ -5,14 +5,16 @@ import { IAutoCompleteResult } from 'types';
 interface Props {
   suggestion: IAutoCompleteResult;
   setLocationKey;
+  setLocationName;
 }
 
 export function SearchResult(props: Props) {
-  const { suggestion, setLocationKey } = props;
+  const { suggestion, setLocationKey, setLocationName } = props;
   return suggestion ? (
     <SuggestionWrapper
       onClick={() => {
         setLocationKey(suggestion.Key);
+        setLocationName(suggestion.LocalizedName)
       }}
     >
       <NavLink exact={true} className="link" to={`${suggestion.Key}`}>

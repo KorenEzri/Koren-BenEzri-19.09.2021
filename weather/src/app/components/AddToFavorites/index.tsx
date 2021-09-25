@@ -9,6 +9,7 @@ interface Props {
   favorite?: boolean;
   favoriteItem: IFavorite;
   locationKey: string;
+  locationName: string;
 }
 
 export function AddToFavorites(props: Props) {
