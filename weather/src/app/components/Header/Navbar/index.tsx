@@ -1,10 +1,9 @@
-import { NavLink, useHistory } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import styled from 'styled-components/macro';
 
 interface Props {}
 
 export function Navbar(props: Props) {
-  const history = useHistory();
   return (
     <NavbarFrame>
       <NavBtnBox>
@@ -21,8 +20,13 @@ export function Navbar(props: Props) {
 
 const NavbarFrame = styled.div``;
 const NavBtnBox = styled.div`
-  display: flex;
+  @media (max-width: 768px) {
+    width: 170px;
+    margin-left: 90px;
+    float: left;
+  }
   float: right;
+  display: flex;
   width: 300px;
   justify-content: space-between;
   * {
@@ -52,6 +56,10 @@ const FavoritesNavBtn = styled.div`
     position: relative;
     top: 1px;
   }
+  @media (max-width: 768px) {
+    font-size: 12px;
+    padding: 10px 16px;
+  }
 `;
 const WeatherNavBtn = styled.div`
   box-shadow: 0px 10px 14px -7px #9fb4f2;
@@ -67,6 +75,10 @@ const WeatherNavBtn = styled.div`
   padding: 10px 36px;
   text-decoration: none;
   text-shadow: 0px 1px 0px #283966;
+  @media (max-width: 768px) {
+    font-size: 12px;
+    padding: 10px 16px;
+  }
   &:hover {
     background: linear-gradient(to bottom, #476e9e 5%, #7892c2 100%);
     background-color: #476e9e;

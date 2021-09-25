@@ -2,13 +2,8 @@ import * as React from 'react';
 import styled from 'styled-components/macro';
 import { CurrentWeather } from './CurrentWeather/Loadable';
 import { FiveDayForecast } from './FiveDayForecast/Loadable';
-import { WeatherBasics } from "./WeatherBasics/Loadable"
-import {
-  getCurrentConditions,
-  getFiveDayForecast,
-  fullConditions,
-  mock,
-} from 'utils';
+import { WeatherBasics } from './WeatherBasics/Loadable';
+import { getCurrentConditions, getFiveDayForecast, mock } from 'utils';
 import { IFiveDayForecast, IFullConditions, ISpinnerError } from 'types';
 import { Spinner } from '../Spinner/Loadable';
 import { AddToFavorites, SearchBar } from '..';
@@ -30,18 +25,21 @@ export function WeatherDetails(props: Props) {
   React.useEffect(() => {
     let key = window.location.hash.slice(2);
     setLocationKey(key);
-  }, [locationKey]);
+  }, [locationKey, locationName]);
 
   React.useEffect(() => {
     (async () => {
       try {
         setShowSpinner(true);
-        // await getCurrentConditions(Number(locationKey), setCurrentConditions);
-        // await getFiveDayForecast(Number(locationKey), setFiveDayForecase);
-        fullConditions.key = locationKey;
-        fullConditions.locationName = locationName;
-        setCurrentConditions([fullConditions]);
-        setFiveDayForecase(mock.fiveDays);
+        await getCurrentConditions(Number(locationKey), setCurrentConditions);
+        await getFiveDayForecast(Number(locationKey), setFiveDayForecase);
+        if (!currentConditions[0]) {
+          setShowSpinner(false);
+          return;
+        }
+        currentConditions[0].key = locationKey || '215854';
+        currentConditions[0].locationName = locationName || 'Tel Aviv';
+        setCurrentConditions(currentConditions);
         setShowSpinner(false);
       } catch ({ message }) {
         console.log(message);
@@ -55,7 +53,7 @@ export function WeatherDetails(props: Props) {
         setShowSpinner(false);
       }
     })();
-  }, [locationKey]);
+  }, [locationKey, locationName]);
 
   return (
     <Spinner
@@ -100,7 +98,7 @@ const WeatherDetailsFrame = styled.div`
   user-select: none;
 `;
 const LeftSidebarFrame = styled.div`
-  background-color: #fffffd;
+  margin-top: -5px;
   width: 20%;
   float: left;
   @media (max-width: 768px) {

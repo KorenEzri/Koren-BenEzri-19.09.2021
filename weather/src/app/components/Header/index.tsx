@@ -17,9 +17,7 @@ export function Header(props: Props) {
 
 const HeaderFrame = styled.div`
 
-@media (max-width: 768px) {
-  display:none;
-}      
+    
 `;
 const HeaderLeftFrame = styled.div`
   width: 20%;
