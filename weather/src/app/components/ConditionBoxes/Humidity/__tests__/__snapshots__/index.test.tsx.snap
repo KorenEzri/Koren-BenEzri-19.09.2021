@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Humidity  /> should match snapshot 1`] = `
+.c0 img {
+  width: 150px;
+  height: 150px;
+  margin-left: 20px;
+  margin-top: 10px;
+}
+
+.c0 span {
+  position: relative;
+  right: 90px;
+  font-size: 26px;
+  font-weight: bold;
+}
+
+<div
+  class="c0"
+>
+  <img
+    alt="humidity"
+    src="humid.png"
+  />
+  <span />
+</div>
+`;

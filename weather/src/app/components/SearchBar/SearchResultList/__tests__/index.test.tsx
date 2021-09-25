@@ -1,12 +1,12 @@
 import * as React from 'react';
 import { render } from '@testing-library/react';
 
-import { ForecastDay } from '..';
+import { SearchResultList } from '..';
 
 
-describe('<ForecastDay  />', () => {
+describe('<SearchResultList  />', () => {
   it('should match snapshot', () => {
-    const loadingIndicator = render(<ForecastDay />);
+    const loadingIndicator = render(<SearchResultList />);
     expect(loadingIndicator.container.firstChild).toMatchSnapshot();
   });
 });

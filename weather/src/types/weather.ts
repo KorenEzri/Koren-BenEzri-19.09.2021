@@ -23,6 +23,7 @@ export interface ICurrentConditions {
   Temperature: ITempratureType;
   MobileLink: string;
   Link: string;
+  favorite?: boolean;
 }
 
 interface IDayNight {
@@ -617,4 +618,26 @@ export interface IFullConditions {
   TemperatureSummary: TemperatureSummary;
   MobileLink: string;
   Link: string;
+  favorite?: boolean;
+  key?: string;
+}
+
+export interface Country {
+  ID: string;
+  LocalizedName: string;
+}
+
+export interface AdministrativeArea {
+  ID: string;
+  LocalizedName: string;
+}
+
+export interface IAutoCompleteResult {
+  Version: number;
+  Key: string;
+  Type: string;
+  Rank: number;
+  LocalizedName: string;
+  Country: Country;
+  AdministrativeArea: AdministrativeArea;
 }

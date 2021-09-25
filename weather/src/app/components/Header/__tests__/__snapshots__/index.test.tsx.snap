@@ -1,0 +1,35 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Header  /> should match snapshot 1`] = `
+.c1 {
+  width: 20%;
+  float: left;
+  padding: 10px;
+}
+
+.c2 {
+  background-color: #f7f6f9;
+  width: 80%;
+  float: right;
+  padding: 10px;
+}
+
+@media (max-width:768px) {
+  .c0 {
+    display: none;
+  }
+}
+
+<div
+  class="c0"
+>
+  <div
+    class="c1"
+  />
+  <div
+    class="c2"
+  >
+    RIGHT
+  </div>
+</div>
+`;

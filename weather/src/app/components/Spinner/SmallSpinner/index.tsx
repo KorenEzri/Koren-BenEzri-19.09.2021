@@ -1,7 +1,7 @@
 import React from 'react';
 import * as styles from '../spinner-styles';
 
-export function SmallSpinner() {
+export function BigSpinner() {
   return (
   <styles.SpinnerDiv>
     <styles.StyledSpinner>

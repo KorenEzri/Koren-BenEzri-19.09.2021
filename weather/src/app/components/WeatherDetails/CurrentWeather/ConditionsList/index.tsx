@@ -16,7 +16,6 @@ interface Props {
 
 export function ConditionsList(props: Props) {
   const { currentConditions } = props;
-  console.log(currentConditions);
   return (
     <ConditionListFrame>
       {currentConditions && (

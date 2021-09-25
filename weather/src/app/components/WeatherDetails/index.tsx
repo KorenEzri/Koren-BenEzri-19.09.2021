@@ -2,32 +2,47 @@ import * as React from 'react';
 import styled from 'styled-components/macro';
 import { CurrentWeather } from './CurrentWeather/Loadable';
 import { FiveDayForecast } from './FiveDayForecast/Loadable';
-import { getCurrentConditions, getFiveDayForecast, mock, fullConditions } from 'utils';
-import { ICurrentConditions, IFiveDayForecast, IFullConditions, ISpinnerError } from 'types';
+import { WeatherBasics } from "./WeatherBasics/Loadable"
+import {
+  getCurrentConditions,
+  getFiveDayForecast,
+  fullConditions,
+  mock,
+} from 'utils';
+import { IFiveDayForecast, IFullConditions, ISpinnerError } from 'types';
 import { Spinner } from '../Spinner/Loadable';
+import { AddToFavorites, SearchBar } from '..';
 
-interface Props {
-  locationKey: string;
-}
+interface Props {}
 
 export function WeatherDetails(props: Props) {
+  const [searchText, setSearchText] = React.useState('');
+  const [locationKey, setLocationKey] = React.useState<string>('');
   const [showSpinner, setShowSpinner] = React.useState(false);
   const [spinnerError, setSpinnerError] = React.useState<ISpinnerError>();
-  const [currentConditions, setCurrentConditions] = React.useState<IFullConditions[]>([]);
+  const [currentConditions, setCurrentConditions] = React.useState<
+    IFullConditions[]
+  >([]);
   const [fiveDayForecast, setFiveDayForecase] =
     React.useState<IFiveDayForecast>();
-  const { locationKey } = props;
+
+  React.useEffect(() => {
+    const key = window.location.hash.slice(10);
+    setLocationKey(key);
+  }, [locationKey]);
+
   React.useEffect(() => {
     (async () => {
       try {
         setShowSpinner(true);
         // await getCurrentConditions(Number(locationKey), setCurrentConditions);
         // await getFiveDayForecast(Number(locationKey), setFiveDayForecase);
-        setCurrentConditions([fullConditions])
-        setFiveDayForecase(mock.fiveDays)
+        fullConditions.key = locationKey;
+        setCurrentConditions([fullConditions]);
+        setFiveDayForecase(mock.fiveDays);
         setShowSpinner(false);
       } catch ({ message }) {
-        console.log(message)
+        console.log(message);
         if (typeof message === 'string') {
           const error = {
             isErr: true,
@@ -38,7 +53,7 @@ export function WeatherDetails(props: Props) {
         setShowSpinner(false);
       }
     })();
-  }, []);
+  }, [locationKey]);
 
   return (
     <Spinner
@@ -47,13 +62,53 @@ export function WeatherDetails(props: Props) {
       VisualComponent={false}
     >
       <WeatherDetailsFrame>
-        {fiveDayForecast && (
-          <FiveDayForecast fiveDayForecast={fiveDayForecast} />
-        )}
-        <CurrentWeather currentConditions={currentConditions} />
+        <LeftSidebarFrame>
+          <SearchBar
+            setSearchText={setSearchText}
+            setLocationKey={setLocationKey}
+            searchText={searchText}
+          />
+          <WeatherBasics currentConditions={currentConditions[0]} />
+          {fiveDayForecast && (
+            <AddToFavorites
+              favorite={currentConditions[0].favorite}
+              locationKey={locationKey}
+              favoriteItem={{
+                conditions: currentConditions[0],
+                forecast: fiveDayForecast,
+                key: locationKey,
+              }}
+            />
+          )}
+        </LeftSidebarFrame>
+        <MainContentFrame>
+          {fiveDayForecast && (
+            <FiveDayForecast fiveDayForecast={fiveDayForecast} />
+          )}
+          <CurrentWeather currentConditions={currentConditions} />
+        </MainContentFrame>
       </WeatherDetailsFrame>
     </Spinner>
   );
 }
 
-const WeatherDetailsFrame = styled.div``;
+const WeatherDetailsFrame = styled.div`
+  user-select: none;
+`;
+const LeftSidebarFrame = styled.div`
+  background-color: #fffffd;
+  width: 20%;
+  float: left;
+  @media (max-width: 768px) {
+    width: 10%;
+  }
+`;
+const MainContentFrame = styled.div`
+  background-color: #f7f6f9;
+  padding: 10px;
+  width: 80%;
+  float: right;
+  @media (max-width: 768px) {
+    width: 100%;
+  }
+`;

@@ -1,4 +1,3 @@
-import * as React from 'react';
 import styled from 'styled-components/macro';
 import { IFiveDayForecast } from 'types';
 import { ForecastDayList } from './ForecastDayList/Loadable';

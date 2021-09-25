@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<FavoriteListItem  /> should match snapshot 1`] = `
+<div
+  class="FavoriteListItem__Div-sc-166omw5-0"
+/>
+`;

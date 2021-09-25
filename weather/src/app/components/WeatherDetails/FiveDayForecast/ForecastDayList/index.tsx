@@ -1,4 +1,3 @@
-import * as React from 'react';
 import styled from 'styled-components/macro';
 import { IFiveDayForecast } from 'types';
 import { ForecastDay } from './ForecastDay/Loadable';
@@ -13,9 +12,7 @@ export function ForecastDayList(props: Props) {
     <FiveDayForecastListFrame>
       {fiveDayForecast?.DailyForecasts.map((forecast, index) => {
         return (
-          <>
-            <ForecastDay index={index} forecast={forecast} />
-          </>
+            <ForecastDay key={`forecastDayKey#${index}`} index={index} forecast={forecast} />
         );
       })}
     </FiveDayForecastListFrame>

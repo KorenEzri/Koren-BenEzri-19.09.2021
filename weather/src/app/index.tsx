@@ -11,7 +11,7 @@ import { useTranslation } from 'react-i18next';
 export function App() {
   const { i18n } = useTranslation();
   return (
-    <HashRouter basename={process.env.PUBLIC_URL}>
+    <HashRouter>
       <Header />
       <Helmet
         titleTemplate="%s - Weather"
@@ -21,7 +21,7 @@ export function App() {
         <meta name="description" content="A Weather application" />
       </Helmet>
       <Switch>
-        <Route exact path="/:key">
+        <Route path="/weather/:key">
           <HomePage />
         </Route>
         <Route>

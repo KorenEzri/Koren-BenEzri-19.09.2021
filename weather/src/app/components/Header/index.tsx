@@ -1,6 +1,4 @@
-import * as React from 'react';
 import styled from 'styled-components/macro';
-import { SearchBar } from '..';
 
 interface Props {}
 
@@ -8,14 +6,18 @@ export function Header(props: Props) {
   return (
     <HeaderFrame>
       <HeaderLeftFrame>
-      <SearchBar />
       </HeaderLeftFrame>
       <HeaderRightFrame>RIGHT</HeaderRightFrame>
     </HeaderFrame>
   );
 }
 
-const HeaderFrame = styled.div``;
+const HeaderFrame = styled.div`
+
+@media (max-width: 768px) {
+  display:none;
+}      
+`;
 const HeaderLeftFrame = styled.div`
   width: 20%;
   float: left;
