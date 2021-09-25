@@ -1,12 +1,12 @@
 import * as React from 'react';
 import { render } from '@testing-library/react';
 
-import { SearchBar } from '..';
+import { SubmitLoader } from '..';
 
 
-describe('<SearchBar  />', () => {
+describe('<SubmitLoader  />', () => {
   it('should match snapshot', () => {
-    const loadingIndicator = render(<SearchBar />);
+    const loadingIndicator = render(<SubmitLoader />);
     expect(loadingIndicator.container.firstChild).toMatchSnapshot();
   });
 });

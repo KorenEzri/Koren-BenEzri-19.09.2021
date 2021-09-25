@@ -1,0 +1,34 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<App /> should render and match the snapshot 1`] = `
+<HashRouter>
+  <Unknown />
+  <Helmet
+    defaultTitle="Weather"
+    defer={true}
+    encodeSpecialCharacters={true}
+    htmlAttributes={
+      Object {
+        "lang": undefined,
+      }
+    }
+    titleTemplate="%s - Weather"
+  >
+    <meta
+      content="A Weather application"
+      name="description"
+    />
+  </Helmet>
+  <Switch>
+    <Route
+      path="/:key"
+    >
+      <Unknown />
+    </Route>
+    <Route>
+      <Unknown />
+    </Route>
+  </Switch>
+  <Memo(l) />
+</HashRouter>
+`;

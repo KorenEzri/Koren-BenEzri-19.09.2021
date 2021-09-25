@@ -727,4 +727,6 @@ export const fullConditions = {
   MobileLink:
     'http://www.accuweather.com/en/il/tel-aviv/215854/current-weather/215854?lang=en-us',
   Link: 'http://www.accuweather.com/en/il/tel-aviv/215854/current-weather/215854?lang=en-us',
+  key: '',
+  locationName: ''
 };

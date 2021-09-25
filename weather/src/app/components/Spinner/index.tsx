@@ -1,22 +1,24 @@
 import * as React from 'react';
 import { ISpinnerError } from 'types';
-import { SmallSpinner } from './SmallSpinner';
+import { BigSpinner } from './SmallSpinner';
+import { SubmitLoader } from './SubmitLoader/Loadable'
 import * as styles from './spinner-styles';
 interface Props {
   children: any;
   VisualComponent: React.FunctionComponent | false;
   showSpinner: boolean;
   error: ISpinnerError | undefined;
+  submitLoader?:boolean;
 }
 
 export function Spinner(props: Props) {
-  const { children, VisualComponent, error, showSpinner: show } = props;
+  const { children, VisualComponent, error, showSpinner: show, submitLoader } = props;
   return (
     <>
       {show ? (
         <styles.PositionedSpinnerDiv>
           <styles.SpinnerDiv className="container">
-            {VisualComponent ? <VisualComponent /> : <SmallSpinner />}
+            {submitLoader ? <SubmitLoader /> : VisualComponent ? <VisualComponent /> : <BigSpinner />}
           </styles.SpinnerDiv>
         </styles.PositionedSpinnerDiv>
       ) : error && error.isErr ? (

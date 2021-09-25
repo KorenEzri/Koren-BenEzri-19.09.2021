@@ -1,0 +1,39 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<WindSpeed  /> should match snapshot 1`] = `
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+
+.c0 img {
+  width: 140px;
+  height: 140px;
+  margin: auto;
+}
+
+.c0 p {
+  margin-top: -6px;
+  margin-left: 3px;
+  font-weight: bold;
+  -webkit-letter-spacing: 1.5px;
+  -moz-letter-spacing: 1.5px;
+  -ms-letter-spacing: 1.5px;
+  letter-spacing: 1.5px;
+}
+
+<div
+  class="c0"
+>
+  <img
+    alt="wind speed"
+    src="wind-speed.png"
+  />
+  <p />
+</div>
+`;

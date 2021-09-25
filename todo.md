@@ -10,29 +10,31 @@
 
 - [x] Tel Aviv weather should be displayed by default.
 
-- [ ] Reconnect the API and create a working search for the weather.
+- [x] Reconnect the API and create a working search for the weather.
 
-- [ ] Disable the API and design the search bar and the main page that displays the weather and forecasts.
+- [x] Disable the API and design the search bar and the main page that displays the weather and forecasts.
+
+- [x] When clicking on a city from search results, make sure it re-renders the details for that city
 
 - [ ] Create the header:
 
   - [ ] Create navigation links/icons/buttons for main and favorites screens
   - [ ] Design navigation buttons
 
-- [ ] Create the "favorites" system:
+- [x] Create the "favorites" system:
 
-  - [ ] Create a "favorite" indication for cities.
-  - [ ] Create an "add/remove to/from favorites button".
-  - [ ] Create a redux-persist state management system for storing favorites.
+  - [x] Create a "favorite" indication for cities.
+  - [x] Create an "add/remove to/from favorites button".
+  - [x] Create a redux-persist state management system for storing favorites.
 
 - [ ] Create the "favorites" screen:
 
   - [ ] Present the list of favorites. Each favorite will show an ID, a name, and current weather.
   - [ ] Clicking on a favorite will navigate to the main screen, showing favorite.
 
-- [ ] Do an error-handling sweep
+- [x] Do an error-handling sweep
 
-- [ ] Finish designs
+<!-- - [ ] Finish designs -->
 
 - [ ] Bonusus:
   - [ ] Set the default location using the Geolocation API.

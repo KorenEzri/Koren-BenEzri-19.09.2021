@@ -7,7 +7,7 @@ interface Props {
 
 export function WindSpeedDirection(props: Props) {
   const { data } = props;
-  return (
+  return data ? (
     <WindSpeedDirectionFrame>
       <Direction>
         <p>
@@ -17,7 +17,7 @@ export function WindSpeedDirection(props: Props) {
       </Direction>
       <Arrow className={`arrow ${data.direction}`}></Arrow>
     </WindSpeedDirectionFrame>
-  );
+  ) : null;
 }
 
 const Direction = styled.div`

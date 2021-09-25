@@ -6,7 +6,7 @@ import { WindSpeedDirection } from '..';
 
 describe('<WindSpeedDirection  />', () => {
   it('should match snapshot', () => {
-    const loadingIndicator = render(<WindSpeedDirection />);
+    const loadingIndicator = render(<WindSpeedDirection data={undefined} />);
     expect(loadingIndicator.container.firstChild).toMatchSnapshot();
   });
 });

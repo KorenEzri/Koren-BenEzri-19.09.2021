@@ -1,0 +1,94 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Visibility  /> should match snapshot 1`] = `
+.c0 {
+  text-align: center;
+  height: 175px;
+  margin-left: -16px;
+  overflow: hidden;
+  border-radius: 20px;
+}
+
+.c0 p {
+  font-weight: bold;
+  -webkit-letter-spacing: 1.5px;
+  -moz-letter-spacing: 1.5px;
+  -ms-letter-spacing: 1.5px;
+  letter-spacing: 1.5px;
+}
+
+.c1 {
+  top: 0;
+  -webkit-transform: rotate(80deg);
+  -ms-transform: rotate(80deg);
+  transform: rotate(80deg);
+  left: 0;
+}
+
+.c1:after {
+  content: '';
+  display: block;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 11;
+  -webkit-transform: translate3d(0,0,0);
+  -ms-transform: translate3d(0,0,0);
+  transform: translate3d(0,0,0);
+}
+
+.c2 {
+  position: fixed;
+  top: 0;
+  left: 0;
+  opacity: 0.4;
+  position: absolute;
+  background: #0af;
+  width: 1200px;
+  height: 1300px;
+  -webkit-transform-origin: 50% 48%;
+  -ms-transform-origin: 50% 48%;
+  transform-origin: 50% 48%;
+  border-radius: 43%;
+  -webkit-animation: drift 7000ms infinite linear;
+  animation: drift 7000ms infinite linear;
+  margin-top: -120px;
+}
+
+.c2 .two {
+  -webkit-animation: drift 3000ms infinite linear;
+  animation: drift 3000ms infinite linear;
+  opacity: 0.1;
+  background: black;
+  position: fixed;
+}
+
+.c2 .three {
+  -webkit-animation: drift 7500ms infinite linear;
+  animation: drift 7500ms infinite linear;
+  position: fixed;
+  background-color: red;
+}
+
+<div
+  class="c0"
+>
+  <div
+    class="c1"
+  >
+    <div
+      class="c2 one"
+    />
+    <div
+      class="c2 two"
+    />
+    <div
+      class="c2 three"
+    />
+  </div>
+  <p>
+     
+  </p>
+</div>
+`;

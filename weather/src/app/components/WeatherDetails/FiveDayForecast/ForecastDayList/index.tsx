@@ -6,16 +6,26 @@ import { ForecastDay } from './ForecastDay/Loadable';
 interface Props {
   fiveDayForecast: IFiveDayForecast;
 }
+enum TempratureType {
+  "fahrenheit",
+  "celsius"
+}
 
 export function ForecastDayList(props: Props) {
+  const [tempratureType, setTempratureType] = React.useState<TempratureType>(0);
   const { fiveDayForecast } = props;
+
+  const cToFahr = (c) => c * 9 / 5 + 32;
+  const fahrToC = (f) => (f - 32) * 5 / 9
+
   return (
     <FiveDayForecastListFrame>
       {fiveDayForecast?.DailyForecasts.map((forecast, index) => {
+        // if (tempratureType === TempratureType.celsius) {
+          
+        // }
         return (
-          <>
-            <ForecastDay index={index} forecast={forecast} />
-          </>
+            <ForecastDay key={`forecastDayKey#${index}`} index={index} forecast={forecast} />
         );
       })}
     </FiveDayForecastListFrame>
