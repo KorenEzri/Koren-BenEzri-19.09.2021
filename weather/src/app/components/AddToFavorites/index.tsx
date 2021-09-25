@@ -36,7 +36,6 @@ export function AddToFavorites(props: Props) {
       onClick={() => {
         setStar(!star);
         if (star) {
-          console.log("HERE")
           dispatch(removeFavorite(favoriteItem));
         } else {
           dispatch(addFavorite(favoriteItem));
@@ -70,6 +69,12 @@ const FavoriteBtnFrame = styled.div`
   margin-left: 100px;
   margin-top: 80px;
   width: 10px;
+  @media (max-width: 768px) {
+    position: absolute;
+    top: 0;
+    margin-top: 10px;
+    left: 320px;
+  }
   @keyframes fav {
     70% {
       transform: scale(1.5);

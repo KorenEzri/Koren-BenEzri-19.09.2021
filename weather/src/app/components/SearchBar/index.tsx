@@ -30,7 +30,7 @@ export function SearchBar(props: Props) {
       try {
         setShowSpinner(true);
         debounce(async () => {
-          // await getAutoCompleteSuggestions(searchText, setSearchSuggestions);
+          await getAutoCompleteSuggestions(searchText, setSearchSuggestions);
           // setSearchSuggestions(mock.autoComplete);
           setShowSpinner(false);
         }, 300);
@@ -77,7 +77,7 @@ export function SearchBar(props: Props) {
       >
         {searchSuggestions.length > 0 && (
           <SearchResultList
-          setLocationName={setLocationName}
+            setLocationName={setLocationName}
             setLocationKey={setLocationKey}
             searchSuggestions={searchSuggestions}
           />
@@ -88,14 +88,17 @@ export function SearchBar(props: Props) {
 }
 
 const SearchBarFrame = styled.div`
+  padding: 22px;
+  background-color: #f7f6f9;
   display: flex;
   flex-direction: column;
   margin-top: -15px;
   @media (max-width: 768px) {
-    margin-top: unset;
+    padding: unset;
   }
 `;
 const SearchBarInputFrame = styled.div`
+  background-color: #f7f6f9;
   input {
     border: 1px solid grey;
     color: black;
@@ -107,6 +110,7 @@ const SearchBarInputFrame = styled.div`
     transition: 500ms;
     border-radius: 6px;
     cursor: pointer;
+    width: 15vw;
     background-color: white;
     &:hover {
       transition: 500ms;
@@ -119,16 +123,6 @@ const SearchBarInputFrame = styled.div`
       color: white;
       border-radius: 9px;
       background-color: darkgreen;
-    }
-    @media (max-width: 768px) {
-      margin-top: 10px;
-      margin-bottom: 10px;
-      &:focus {
-        width: unset;
-      }
-      &:hover {
-        width: unset;
-      }
     }
   }
 `;

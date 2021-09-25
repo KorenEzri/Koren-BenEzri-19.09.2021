@@ -1,3 +1,4 @@
+import React from 'react';
 import styled from 'styled-components/macro';
 import { IFullConditions } from 'types';
 import { getDayOfWeek, loadImage } from 'utils';
@@ -7,45 +8,61 @@ interface Props {
 }
 
 export function WeatherBasics(props: Props) {
+  const [icon, setIcon] = React.useState<number>();
+  const [day, setDay] = React.useState<string>();
+  const [time, setTime] = React.useState<string>();
+
   const { currentConditions } = props;
-  const iconAsNumber = currentConditions?.WeatherIcon;
-  const dayOfTheWeek = getDayOfWeek(new Date(currentConditions?.LocalObservationDateTime));
-  const time = new Date(currentConditions?.LocalObservationDateTime).toTimeString().split(" ")[0]
+  React.useEffect(() => {
+    const iconAsNumber = currentConditions?.WeatherIcon;
+    const dayOfTheWeek = getDayOfWeek(
+      new Date(currentConditions?.LocalObservationDateTime),
+    );
+    const time = new Date(currentConditions?.LocalObservationDateTime)
+      .toTimeString()
+      .split(' ')[0];
+
+    setIcon(iconAsNumber);
+    setDay(dayOfTheWeek);
+    setTime(time);
+  });
 
   return currentConditions ? (
     <WeatherBasicsFrame>
-      <WeatherBasicsName>
-      {currentConditions.locationName}
-      </WeatherBasicsName>
-      <WeatherBasicsIcon>
+      <WeatherBasicsName>{currentConditions.locationName}</WeatherBasicsName>
+      {icon && <WeatherBasicsIcon>
         <img
           src={loadImage(
-            `${iconAsNumber < 10 ? `0${iconAsNumber}` : iconAsNumber}-s.png`,
+            `${icon < 10 ? `0${icon}` : icon}-s.png`,
           )}
           alt={currentConditions.WeatherText}
         />
         <p>{currentConditions.WeatherText}</p>
-      </WeatherBasicsIcon>
+      </WeatherBasicsIcon>}
       <WeatherBasicsTemp>
-        {currentConditions.Temperature.Metric.Value}<span>&#8451;</span>
+        {currentConditions.Temperature.Metric.Value}
+        <span>&#8451;</span>
       </WeatherBasicsTemp>
-      <WeatherBasicsTime>
-        {dayOfTheWeek}, <span>{time.split(":")[0] + ":" + time.split(":")[1]}</span>
-      </WeatherBasicsTime>
+      {time && <WeatherBasicsTime>
+        {day},{' '}
+        <span>{time.split(':')[0] + ':' + time.split(':')[1]}</span>
+      </WeatherBasicsTime>}
       <SeperatorLine></SeperatorLine>
-
     </WeatherBasicsFrame>
   ) : null;
 }
 
 const WeatherBasicsFrame = styled.div`
+  @media (max-width: 768px) {
+    display: none;
+  }
 `;
 const WeatherBasicsName = styled.div`
-text-align: center;
-font-size: 26px;
-margin-top: 30px;
-margin-bottom: -30px;
-letter-spacing: 1.8px;
+  text-align: center;
+  font-size: 26px;
+  margin-top: 30px;
+  margin-bottom: -30px;
+  letter-spacing: 1.8px;
 `;
 const WeatherBasicsIcon = styled.div`
   img {
@@ -53,12 +70,14 @@ const WeatherBasicsIcon = styled.div`
     height: 130px;
     margin-left: 25px;
     margin-top: 50px;
+    @media (max-width: 868px) {
+      margin-left: -20px;
+    }
   }
   p {
     font-size: 18px;
-  letter-spacing: 1.5px;
-  text-align: center;
-
+    letter-spacing: 1.5px;
+    text-align: center;
   }
 `;
 const WeatherBasicsTemp = styled.div`
@@ -72,7 +91,7 @@ const WeatherBasicsTemp = styled.div`
     top: -10px;
     left: 5px;
   }
-`
+`;
 const WeatherBasicsTime = styled.div`
   font-size: 18px;
   letter-spacing: 1.5px;
@@ -83,10 +102,10 @@ const WeatherBasicsTime = styled.div`
     font-weight: normal;
     color: grey;
   }
-`
+`;
 const SeperatorLine = styled.div`
-width: 90%;
-margin: auto;
-margin-top: 50px;
-border: 0.2px solid lightgrey;
-`
+  width: 90%;
+  margin: auto;
+  margin-top: 50px;
+  border: 0.2px solid lightgrey;
+`;
