@@ -1,9 +1,16 @@
 import * as React from 'react';
 import styled from 'styled-components/macro';
+import Swal from 'sweetalert2'
+import withReactContent from 'sweetalert2-react-content'
 import { CurrentWeather } from './CurrentWeather/Loadable';
 import { FiveDayForecast } from './FiveDayForecast/Loadable';
 import { WeatherBasics } from './WeatherBasics/Loadable';
-import { getCurrentConditions, getFiveDayForecast, mock } from 'utils';
+import {
+  fullConditions,
+  getCurrentConditions,
+  getFiveDayForecast,
+  mock,
+} from 'utils';
 import { IFiveDayForecast, IFullConditions, ISpinnerError } from 'types';
 import { Spinner } from '../Spinner/Loadable';
 import { AddToFavorites, SearchBar } from '..';
@@ -21,6 +28,8 @@ export function WeatherDetails(props: Props) {
   >([]);
   const [fiveDayForecast, setFiveDayForecase] =
     React.useState<IFiveDayForecast>();
+
+  const MySwal = withReactContent(Swal)
 
   React.useEffect(() => {
     let key = window.location.hash.slice(2);
@@ -42,6 +51,20 @@ export function WeatherDetails(props: Props) {
         setCurrentConditions(currentConditions);
         setShowSpinner(false);
       } catch ({ message }) {
+        if (message === 'Request failed with status code 503') {
+          MySwal.fire({
+            title: <p>Erorr - status 503</p>,
+            didOpen: () => {
+              MySwal.clickConfirm()
+            }
+          }).then(() => {
+            return MySwal.fire(<p>Too many requests - the service was blocked by AccuWeather, displaying mock data.</p>)
+          })
+          setCurrentConditions([fullConditions]);
+          setFiveDayForecase(mock.fiveDays);
+          setShowSpinner(false);
+          return;
+        }
         console.log(message);
         if (typeof message === 'string') {
           const error = {
@@ -75,11 +98,6 @@ export function WeatherDetails(props: Props) {
               favorite={currentConditions[0].favorite}
               locationKey={locationKey}
               locationName={locationName}
-              favoriteItem={{
-                conditions: currentConditions[0],
-                forecast: fiveDayForecast,
-                key: locationKey,
-              }}
             />
           )}
         </LeftSidebarFrame>

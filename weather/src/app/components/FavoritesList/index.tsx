@@ -14,7 +14,7 @@ export function FavoritesList(props: Props) {
         {favorites?.map((favorite, index) => {
           return (
             <FavoriteListItem
-              favorite={favorite}
+            iFavorite={favorite}
               key={`favoriteListItem#${index}`}
             />
           );

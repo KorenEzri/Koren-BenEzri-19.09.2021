@@ -7,17 +7,20 @@ import { IFavorite } from '../favoritesSlice/types';
 
 interface Props {
   favorite?: boolean;
-  favoriteItem: IFavorite;
   locationKey: string;
   locationName: string;
 }
 
 export function AddToFavorites(props: Props) {
   const isFavorite = props.favorite || false;
-  const { favoriteItem, locationKey } = props;
+  const { locationKey, locationName } = props;
+
   const [star, setStar] = React.useState(isFavorite);
+  const [favorite, setFavorite] = React.useState<IFavorite>();
+
   const { favorites } = useSelector(selectFavorites);
   const dispatch = useDispatch();
+
   const {
     actions: { addFavorite, removeFavorite },
   } = useFavoritesSlice();
@@ -29,16 +32,21 @@ export function AddToFavorites(props: Props) {
       setStar(true)
       return;
     }
+    setFavorite({
+      name: locationName,
+      key: locationKey
+    })
   }, [])
 
   return (
     <FavoriteBtnFrame
       onClick={() => {
+        if (!favorite) return;
         setStar(!star);
         if (star) {
-          dispatch(removeFavorite(favoriteItem));
+          dispatch(removeFavorite(favorite));
         } else {
-          dispatch(addFavorite(favoriteItem));
+          dispatch(addFavorite(favorite));
         }
       }}
     >
