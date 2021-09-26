@@ -1,11 +1,8 @@
-import { IFiveDayForecast, IFullConditions } from '../../../types';
 export interface IFavorite {
-  conditions: IFullConditions;
-  forecast: IFiveDayForecast;
+  name: string;
   key: string;
 }
 /* --- STATE --- */
 export interface IFavoritesState {
   favorites: IFavorite[];
-  locationKeys: string[];
 }

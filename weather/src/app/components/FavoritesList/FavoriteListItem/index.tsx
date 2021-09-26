@@ -1,42 +1,89 @@
 import { IFavorite } from 'app/components/favoritesSlice/types';
+import { Spinner } from 'app/components/Spinner/Loadable';
+import React from 'react';
 import { NavLink } from 'react-router-dom';
 import styled from 'styled-components/macro';
-import { loadImage } from 'utils';
+import { IFiveDayForecast, IFullConditions, ISpinnerError } from 'types';
+import { getCurrentConditions, loadImage } from 'utils';
 
 interface Props {
-  favorite: IFavorite;
+  iFavorite: IFavorite;
 }
 
 export function FavoriteListItem(props: Props) {
-  const { favorite } = props;
-  const iconAsNumber = favorite.conditions.WeatherIcon;
-  return (
-    <FavoriteListItemFrame>
-      <NavLink exact={true} className="link" to={`${favorite.key}`}>
-        <FavoriteName>{favorite.conditions.locationName}</FavoriteName>
-        <FavoriteID>{favorite.key}</FavoriteID>
-        <FavoriteWeatherDay>
-          {favorite.conditions.WeatherText}
-        </FavoriteWeatherDay>
-        <FavoriteWeatherImage>
-          <img
-            src={loadImage(
-              `${iconAsNumber < 10 ? `0${iconAsNumber}` : iconAsNumber}-s.png`,
-            )}
-            alt={favorite.conditions.WeatherText}
-          />
-        </FavoriteWeatherImage>
-      </NavLink>
-    </FavoriteListItemFrame>
-  );
+  const { iFavorite } = props;
+
+  const [showSpinner, setShowSpinner] = React.useState(false);
+  const [spinnerError, setSpinnerError] = React.useState<ISpinnerError>();
+  const [currentConditions, setCurrentConditions] = React.useState<
+    IFullConditions[]
+  >([]);
+
+  React.useEffect(() => {
+    (async () => {
+      try {
+        const { key, name } = iFavorite;
+        setShowSpinner(true);
+        await getCurrentConditions(Number(key), setCurrentConditions);
+        if (!currentConditions[0]) {
+          setShowSpinner(false);
+          return;
+        }
+        currentConditions[0].key = key;
+        currentConditions[0].locationName = name;
+        setCurrentConditions(currentConditions);
+        setShowSpinner(false);
+      } catch ({ message }) {
+        console.log(message);
+        if (typeof message === 'string') {
+          const error = {
+            isErr: true,
+            message: message,
+          };
+          setSpinnerError(error);
+        }
+        setShowSpinner(false);
+      }
+    })();
+  }, []);
+
+  const iconAsNumber = currentConditions[0]?.WeatherIcon;
+  return currentConditions[0] ? (
+    <Spinner
+      showSpinner={showSpinner}
+      error={spinnerError}
+      VisualComponent={false}
+      submitLoader={true}
+    >
+      <FavoriteListItemFrame>
+        <NavLink exact={true} className="link" to={`${iFavorite.key}`}>
+          <FavoriteName>{currentConditions[0].locationName}</FavoriteName>
+          <FavoriteID>{iFavorite.key}</FavoriteID>
+          <FavoriteWeatherDay>
+            {currentConditions[0].WeatherText}
+          </FavoriteWeatherDay>
+          <FavoriteWeatherImage>
+            <img
+              src={loadImage(
+                `${
+                  iconAsNumber < 10 ? `0${iconAsNumber}` : iconAsNumber
+                }-s.png`,
+              )}
+              alt={currentConditions[0].WeatherText}
+            />
+          </FavoriteWeatherImage>
+        </NavLink>
+      </FavoriteListItemFrame>
+    </Spinner>
+  ) : <p>{spinnerError?.message === "Request failed with status code 503" ? "Too many requests - Accuweather blocked us :(" : spinnerError?.message}</p>;
 }
 
 const FavoriteListItemFrame = styled.div`
-margin-bottom: 20px;
-* {
-  text-decoration: none;
-  color: black;
-}
+  margin-bottom: 20px;
+  * {
+    text-decoration: none;
+    color: black;
+  }
   user-select: none;
   margin-top: 10px;
   padding: 20px;
